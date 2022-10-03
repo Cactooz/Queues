@@ -2,7 +2,8 @@ import static java.lang.System.out;
 
 public class Queue {
 	
-	Node head;
+	Node start;
+	Node end;
 	
 	public class Node{
 		private Integer item;
@@ -28,40 +29,37 @@ public class Queue {
 	}
 	
 	public Queue() {
-		head = null;
+		start = null;
+		end =  null;
 	}
 	
 	public void add(Integer item) {
-		if(head == null) {
-			head = new Node(item, null);
+		if(start == null) {
+			start = new Node(item, null);
+			end = start;
 			return;
 		}
 		
-		Node pointer = head;
-		
-		while(pointer.getTail() != null) {
-			pointer = pointer.getTail();
-		}
-		
-		pointer.setTail(new Node(item, null));
+		end.setTail(new Node(item, null));
+		end = end.getTail();
 	}
 	
 	public Integer remove() {
-		Integer item = head.getItem();
+		Integer item = start.getItem();
 		
-		head = head.getTail();
+		start = start.getTail();
 		
 		return item;
 	}
 	
 	public void print() {
-		if(head == null)
+		if(start == null)
 			out.println("Empty queue");
 		else {
 			out.print("{ ");
-			out.print(head.getItem());
+			out.print(start.getItem());
 			
-			Node pointer = head;
+			Node pointer = start;
 			
 			while(pointer.getTail() != null) {
 				pointer = pointer.getTail();
