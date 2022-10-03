@@ -25,6 +25,24 @@ public class Queue {
 		}
 	}
 	
+	public Queue() {
+		head = null;
+	}
 	
+	public void add(Integer item) {
+		Node pointer = head;
+		
+		while(pointer.getTail() != null) {
+			pointer = pointer.getTail();
+		}
+		
+		pointer.setTail(new Node(item, null));
+	}
+	
+	public Integer remove() {
+		Integer item = head.getItem();
+		
+		head = head.getTail();
+	}
 	
 }
