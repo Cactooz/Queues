@@ -5,7 +5,7 @@ public class Queue {
 	Node start;
 	Node end;
 	
-	public class Node{
+	private class Node{
 		private Integer item;
 		private Node tail;
 		
