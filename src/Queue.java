@@ -1,3 +1,5 @@
+import static java.lang.System.out;
+
 public class Queue {
 	
 	Node head;
@@ -50,6 +52,24 @@ public class Queue {
 		head = head.getTail();
 		
 		return item;
+	}
+	
+	public void print() {
+		if(head == null)
+			out.println("Empty queue");
+		else {
+			out.print("{ ");
+			out.print(head.getItem());
+			
+			Node pointer = head;
+			
+			while(pointer.getTail() != null) {
+				pointer = pointer.getTail();
+				out.print(", " + pointer.getItem());
+			}
+			
+			out.println(" }");
+		}
 	}
 	
 }
