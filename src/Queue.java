@@ -5,19 +5,19 @@ public class Queue {
 	Node start;
 	Node end;
 	
-	private class Node{
-		private Integer item;
+	public class Node{
+		private BinaryTree.Node item;
 		private Node tail;
 		
-		public Node(Integer item, Node list) {
+		public Node(BinaryTree.Node item, Node list) {
 			this.item = item;
 			tail = list;
 		}
 		
-		public Integer getItem() {
+		public BinaryTree.Node getItem() {
 			return item;
 		}
-		public void setItem(Integer item) {
+		public void setItem(BinaryTree.Node item) {
 			this.item = item;
 		}
 		public Node getTail() {
@@ -33,7 +33,7 @@ public class Queue {
 		end =  null;
 	}
 	
-	public void add(Integer item) {
+	public void add(BinaryTree.Node item) {
 		if(start == null) {
 			start = new Node(item, null);
 			end = start;
@@ -44,8 +44,8 @@ public class Queue {
 		end = end.getTail();
 	}
 	
-	public Integer remove() {
-		Integer item = start.getItem();
+	public BinaryTree.Node remove() {
+		BinaryTree.Node item = start.getItem();
 		
 		start = start.getTail();
 		
