@@ -30,6 +30,11 @@ public class Queue {
 	}
 	
 	public void add(Integer item) {
+		if(head == null) {
+			head = new Node(item, null);
+			return;
+		}
+		
 		Node pointer = head;
 		
 		while(pointer.getTail() != null) {
@@ -43,6 +48,8 @@ public class Queue {
 		Integer item = head.getItem();
 		
 		head = head.getTail();
+		
+		return item;
 	}
 	
 }
