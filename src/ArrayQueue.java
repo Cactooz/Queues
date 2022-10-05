@@ -2,7 +2,7 @@ import java.util.Arrays;
 import static java.lang.System.out;
 
 public class ArrayQueue {
-	private final int length;
+	private int length;
 	private int first, last;
 	private Integer[] array;
 	
@@ -15,12 +15,13 @@ public class ArrayQueue {
 	
 	public void add(int value) {
 		if(last == first && array[first] != null)
-			throw new ArrayStoreException("The array is full");
+			expandArray();
 			
 		if(last == length) {
 			if(first == 0 && array[first] != null)
-				throw new ArrayStoreException("The array is full");
-			last = 0;
+				expandArray();
+			else
+				last = 0;
 		}
 		array[last++] = value;
 	}
@@ -40,6 +41,21 @@ public class ArrayQueue {
 			array[first++] = null;
 		}
 		return value;
+	}
+	
+	private void expandArray() {
+		Integer[] newArray = new Integer[length*2];
+		
+		for(int i = 0; i < length; i++) {
+			newArray[i] = array[first++];
+			if(first == length)
+				first = 0;
+		}
+		
+		array = newArray;
+		first = 0;
+		last = length;
+		length *= 2;
 	}
 	
 	public void print() {
